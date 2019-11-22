@@ -1,0 +1,29 @@
+<% if @error %>
+  <div><%= @error %></div>
+<% end %>
+
+<form action="/repositories" method="get">
+  Query: <input type="text" name="query">
+  <input type="submit" value="Search">
+</form>
+
+<br>
+<h4>RESULTS</h4>
+<a href="#">Previous page</a>
+|
+<a href="#">Next page</a>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>URL</th>
+  </tr>
+  <% @repositories.each do |repository| %>
+     <tr>
+      <td><%= repository['id'] %></td>
+      <td><%= repository['full_name'] %></td>
+      <td><%= repository['html_url'] %></td>
+    </tr>
+  <% end %>
+</table>
